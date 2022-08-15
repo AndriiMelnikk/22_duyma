@@ -1,10 +1,10 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useMemo, useState} from 'react';
 import { useDispatch } from 'react-redux';
 import NamePriseNumberBlock from '../../components/Block/Blocks/Name_Prise_Number';
 import Loader from '../../components/Loader';
 import ModalInfoEdit from '../../components/Modal/Modals/infoEdit';
 import {useAppDispatch, useAppSelector} from '../../redux/hooks';
-import AlertMessages, { setNewAlert } from '../../redux/reducer/alertMessages';
+import { setNewAlert } from '../../redux/reducer/alertMessages';
 import {GetAllConsumables, setAddressStoreConsumables, setInfoConsumables} from '../../redux/reducer/consumables';
 import {AllBD, ConsumablesToID} from '../../ts/consumables';
 import {BackgroundColor} from '../../ts/ul';
@@ -22,7 +22,6 @@ interface Props {
 }
 
 const Consumables : FC < Props > = ({allConsumables, loaderConsumables, allBD, loaderAllConsumables, addressStore}) => {
-
 
     const [M_InfoConsumables,
         setM_InfoConsumables] = useState < boolean > (false);
@@ -43,7 +42,10 @@ const Consumables : FC < Props > = ({allConsumables, loaderConsumables, allBD, l
 
     }
 
-    const blockWork = allConsumables.length ?  <NamePriseNumberBlock infoBlock={allConsumables} _onClick={ActiveBlock}/> : <h2>Скад пустий</h2>
+    const blockWork = useMemo(() => {
+        return allConsumables.length ?  <NamePriseNumberBlock infoBlock={allConsumables} _onClick={ActiveBlock}/> : <h2>Скад пустий</h2>
+    }, [allConsumables])
+
 
     const Info = [
         ["Назва", infoConsumables.name],
@@ -108,8 +110,7 @@ interface TypeButtonToModal {
     value : string
 }
 
-const ButtonsToModal : FC < TypeButtonToModal > = ({value}) => {
-
+const ButtonsToModal : FC < TypeButtonToModal > = React.memo(({value}) => {
     const dispatch = useDispatch()
 
 
@@ -130,4 +131,4 @@ const ButtonsToModal : FC < TypeButtonToModal > = ({value}) => {
             <Button background={BackgroundColor.red} border={'border'} text='Видалити' _click={AddConsumables}/>
         </div>
     )
-}
+})

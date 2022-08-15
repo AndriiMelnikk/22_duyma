@@ -2,7 +2,7 @@ import axios from 'axios';
 import {_URL} from '.';
 import {WortToID, AllWork, dateUpdateWorkId} from '../ts/typeOfWorks';
 
-const url = _URL + 'work/phpScript/';
+const url = _URL + 'work/phpScript/Test/';
 
 export const TypOfWorks_api = {
     async postWortToID(id : number) {

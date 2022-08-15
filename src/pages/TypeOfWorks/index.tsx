@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, useState} from 'react';
+import React, {ChangeEvent, FC, useMemo, useState} from 'react';
 import NamePriseNumberBlock from '../../components/Block/Blocks/Name_Prise_Number';
 import Loader from '../../components/Loader';
 import ModalInfoEdit from '../../components/Modal/Modals/infoEdit';
@@ -22,6 +22,8 @@ interface Props {
 
 const Type_of_works : FC < Props > = ({loaderScreen, allWork, infoWork, loaderWork}) => {
 
+    // console.log(loaderScreen, allWork, infoWork, loaderWork)
+
     const [MV_infoIdWork,
         setMV_infoIdWork] = useState < boolean > (false);
 
@@ -40,20 +42,21 @@ const Type_of_works : FC < Props > = ({loaderScreen, allWork, infoWork, loaderWo
         setIdSelect(Number(event.target.value))
     }
 
-    const ActiveBlock =(block:any)=>{
+    const ActiveBlock = (block : any) => {
         dispatch(setDetailsWork(block))
         setMV_infoIdWork(true)
     }
 
-
-
-    const blockWork = <NamePriseNumberBlock infoBlock={infoWork} _onClick={ActiveBlock}/>
+    const blockWork = useMemo(() => {
+        return <NamePriseNumberBlock infoBlock={infoWork} _onClick={ActiveBlock}/>
+    }, [infoWork])
 
     const Info = [
-        ["Назва", detailsWork.name],
+        [
+            "Назва", detailsWork.name
+        ],
         ["Ціна", `${detailsWork.prise} грн.`]
     ]
-
 
     const Options = allWork.map((e : AllWork) => (
         <option key={e.id} value={e.id}>{e.name}</option>
@@ -72,7 +75,18 @@ const Type_of_works : FC < Props > = ({loaderScreen, allWork, infoWork, loaderWo
                 setValueInput={setM_InputValue}
                 labelName="Властивісь"
                 inputPlaceholder="Нове значення"
-                listBtn={< ButtonsToModal value = { M_InputValue} idSelect={idSelect} valueInput={setM_InputValue} visibleModal={setMV_infoIdWork} />}
+                listBtn={< ButtonsToModal value = {
+                M_InputValue
+            }
+            idSelect = {
+                idSelect
+            }
+            valueInput = {
+                setM_InputValue
+            }
+            visibleModal = {
+                setMV_infoIdWork
+            } />}
                 listInfo={Info}
                 loader={loaderUpdateWork}
                 visible={MV_infoIdWork}
@@ -87,13 +101,13 @@ export default Type_of_works;
 
 interface TypeButtonToModal {
     value : string;
-    idSelect: number;
-    valueInput: (value: string)=>void;
-    visibleModal: (visible: boolean)=>void;
+    idSelect : number;
+    valueInput : (value : string) => void;
+    visibleModal : (visible : boolean) => void;
 
 }
 
-const ButtonsToModal : FC < TypeButtonToModal > = ({value, idSelect, valueInput, visibleModal}) => {
+const ButtonsToModal : FC < TypeButtonToModal > = React.memo(({value, idSelect, valueInput, visibleModal}) => {
 
     const {detailsWork} = useAppSelector(state => state.typOfWorkSlice);
 
@@ -119,8 +133,8 @@ const ButtonsToModal : FC < TypeButtonToModal > = ({value, idSelect, valueInput,
 
         function _Res(res : any) {
             if (typeof res.payload === 'string') {
-                visibleModal(false); 
-                valueInput(''); 
+                visibleModal(false);
+                valueInput('');
                 dispatch(PostIdWork(idSelect))
                 _Alert({id: 0, message: `Новe значення: ${value}.`, text: "Оновленно", background: BackgroundColor['green']})
             } else {
@@ -147,4 +161,4 @@ const ButtonsToModal : FC < TypeButtonToModal > = ({value, idSelect, valueInput,
             <Button background={BackgroundColor.red} border={'border'} text='Видалити'/>
         </div>
     )
-}
+})
