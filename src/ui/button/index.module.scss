@@ -1,0 +1,89 @@
+@import '../../index.scss';
+
+.button {
+    border: 1px solid transparent;
+    padding: 10px 20px;
+    font-weight: 400;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+    max-width: max-content;
+    font-size: 20px;
+    transition: .2s;
+    border-radius: $BORDER_RADIUS;
+
+    &.background {
+
+
+        &.red {
+            background: $RED;
+        }
+
+        &.yellow {
+            background: $YELLOW;
+        }
+
+        &.green {
+            background: $GREEN;
+        }
+
+        &.default {
+            background: $DEFAULT;
+            color: $GRAY;
+        }
+
+        &:hover {
+            background-color: $GRAY;
+        }
+    }
+
+    &.border {
+        &.red {
+            border-color: $RED;
+            color: $RED;
+
+            &:hover {
+                color: $DEFAULT;
+                background-color: $RED;
+            }
+        }
+
+        &.yellow {
+            border-color: $YELLOW;
+            color: $YELLOW;
+
+            &:hover {
+                color: $DEFAULT;
+                background-color: $YELLOW;
+            }
+        }
+
+        &.green {
+            border-color: $GREEN;
+            color: $GREEN;
+
+            &:hover {
+                color: $DEFAULT;
+                background-color: $GREEN;
+            }
+        }
+
+        &.default {
+            background: $DEFAULT;
+            color: $GRAY;
+            border-color: $GRAY;
+
+            &:hover {
+                color: $DEFAULT;
+                background-color: $GRAY;
+            }
+        }
+    }
+
+    @media (max-width: 568px) {
+        font-size: 15px;
+        padding: 5px 10px;
+    }
+
+}

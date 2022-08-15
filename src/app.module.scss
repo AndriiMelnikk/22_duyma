@@ -1,0 +1,16 @@
+.app {
+    display: grid;
+    grid-template-columns: 255px 1fr;
+    height: 100vh;
+    background-color: white;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 0 1fr;
+    }
+
+    .content {
+        position: relative;
+        min-width: 100%;
+        min-height: 100%;
+    }
+}

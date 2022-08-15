@@ -1,0 +1,76 @@
+@import '../../index.scss';
+
+.containerBlock {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: minmax(150px, 1fr);
+    gap: 30px;
+
+    .blockNumber,
+    .blockNumberName {
+        background-color: $BACKGROUND;
+        border: 1px solid $BORDER_COLOR;
+        border-radius: $BORDER_RADIUS;
+        cursor: pointer;
+        transition: 0.2s;
+        padding: 24px 0;
+        text-align: center;
+        overflow: hidden;
+
+        h5,
+        span {
+            font-weight: 700;
+            font-size: 19px;
+            line-height: 20px;
+            letter-spacing: 0.4px;
+            color: $GRAY;
+        }
+
+        h3 {
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+            letter-spacing: 1px;
+            color: $BASE_DARK_COLOR;
+        }
+
+        &:hover {
+
+            h3,
+            h5 {
+                color: $ACTIVE;
+            }
+
+            border-color: $ACTIVE;
+        }
+    }
+
+    @media (max-width: 568px) {
+        gap: 10px;
+
+        h3 {
+            font-size: 20px;
+        }
+    }
+}
+
+.NumberName {
+
+    .blockNumberName {
+        position: relative;
+
+        .spanPrise {
+            position: absolute;
+            bottom: 10px;
+            right: 30px;
+        }
+
+        .spanNumber {
+            position: absolute;
+            bottom: 10px;
+            left: 30px;
+        }
+    }
+
+}

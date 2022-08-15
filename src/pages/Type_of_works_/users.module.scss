@@ -1,0 +1,51 @@
+@import '../../index.scss';
+
+.usersContent {
+    margin-top: 30px;
+}
+
+.viewDetails {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+
+    @media (max-width: 980px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Unresolved Tickets and Tasks */
+.blockList {
+    li {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.2px;
+        padding: 0 32px;
+        height: 58px;
+        align-items: center;
+        border-top: 1px solid $BORDER_COLOR;
+
+        &:first-child {
+            margin-top: -20px;
+            border-top: none
+        }
+
+        .nameLI {
+            color: $BASE_DARK_COLOR;
+
+            .disableText {
+                color: $GRAY;
+            }
+        }
+
+        .numberLI {
+            text-align: right;
+            color: $GRAY;
+        }
+    }
+}

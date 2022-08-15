@@ -1,0 +1,109 @@
+@import '../../index.scss';
+
+.tableContainer {
+    overflow-x: auto;
+
+    .table {
+        width: auto;
+        min-width: 100%;
+        white-space: nowrap;
+        height: 100%;
+
+
+        thead {
+            text-align: left;
+            color: $GRAY;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 32px;
+            letter-spacing: 0.2px;
+            border-bottom: 2px solid $BORDER_COLOR;
+
+            .th_userDetails {
+                min-width: 415px;
+                padding-left: 32px;
+            }
+
+            .th_companyName {
+                min-width: 250px;
+            }
+
+            .th_email {
+                min-width: 180px;
+            }
+
+            .th_distance {
+                min-width: 145px;
+            }
+
+            .th_else {
+                min-width: 80px;
+            }
+        }
+
+        tbody {
+            tr {
+                height: 92px;
+                border-top: 1px solid $BORDER_COLOR;
+                cursor: pointer;
+
+                td {
+                    vertical-align: top;
+                }
+
+                td:first-child {
+                    padding-left: 32px;
+                }
+
+                td:last-child {
+                    div {
+                        align-items: center;
+                    }
+                }
+            }
+
+            .tb_userDetails {
+                display: grid;
+                grid-template-columns: 50px auto;
+                height: 92px;
+                align-items: center;
+                gap: 4px;
+
+                .userAvatar {
+                    overflow: hidden;
+
+                    img {
+                        border-radius: 50%;
+                    }
+                }
+            }
+
+            .infoTd {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
+
+                .infoTd_h4 {
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 20px;
+                    letter-spacing: 0.2px;
+                    color: $BASE_DARK_COLOR;
+                }
+
+                .infoTd_span {
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 16px;
+                    letter-spacing: 0.1px;
+                    color: $ICON_SVG_FILL;
+                }
+
+                button {
+                    padding: 10px 20px;
+                }
+            }
+        }
+    }
+}

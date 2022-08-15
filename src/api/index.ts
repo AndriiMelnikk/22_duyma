@@ -1,0 +1,1 @@
+export const _URL = 'https://22duyma.com//js/andriiPhp/PHPMailer/admin/';

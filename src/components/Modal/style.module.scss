@@ -1,0 +1,172 @@
+@import '../../index.scss';
+
+.modalContainer {
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0;
+    transition: .2s;
+
+    &.active {
+        z-index: 3;
+        opacity: 1;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(76, 74, 74, 0.4);
+
+        .modal {
+            margin-top: 0px;
+            opacity: 1;
+        }
+    }
+
+    .modal {
+        margin-top: 200px;
+        opacity: .5;
+        display: grid;
+        grid-template-rows: 80px 1fr;
+        width: 95%;
+        height: 90%;
+        background-color: white;
+        border-radius: $BORDER_RADIUS;
+        overflow: hidden;
+        transition: .4s;
+
+        .header {
+            padding: 0 20px;
+            background-color: $GRAY_DARK;
+            display: flex;
+            align-items: center;
+
+            h3 {
+                width: 100%;
+                text-align: center;
+
+                >span {
+                    display: inline-block;
+                    max-width: 80%;
+                    font-size: 36px;
+                    font-weight: 900;
+                }
+            }
+
+            span {
+                color: $LIGHT_BLUR;
+            }
+
+            button {
+                float: right;
+
+                svg {
+                    fill: $ICON_SVG_FILL;
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        }
+
+        .content {
+            overflow: scroll;
+            padding: 5px 20px;
+
+            .duoBlocks {
+                max-width: 900px;
+                margin: 20px auto;
+
+                .textHeader {
+                    text-align: center;
+                }
+
+                .info {
+                    margin: 30px 0;
+                    padding-bottom: 30px;
+                    border-bottom: 2px solid $GRAY;
+                }
+
+                h2 {
+                    display: inline-block;
+                    font-size: 40px;
+                    text-align: center;
+                    margin-bottom: 20px;
+                    border-radius: $BORDER_RADIUS;
+                    background-color: $BASE_DARK_COLOR;
+                    padding: 10px 70px;
+                    margin: 10px auto;
+                    color: $LIGHT_BLUR;
+
+                }
+
+                h3 {
+                    margin-left: 10px;
+                    display: inline;
+                    font-weight: 700;
+                    font-size: 30px;
+                    line-height: 50px;
+                    letter-spacing: 1px;
+                    color: $BASE_DARK_COLOR;
+                }
+
+                h5 {
+                    display: inline;
+                    font-weight: 700;
+                    font-size: 19px;
+                    line-height: 20px;
+                    letter-spacing: 0.4px;
+                    color: $GRAY;
+                }
+
+
+            }
+
+            .blockBTN {
+                width: 100%;
+                margin: 20px 0;
+
+                position: relative;
+                padding: 0;
+
+                button {
+                    margin: 5px;
+                }
+
+                button:last-child {
+                    float: right;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 568px) {
+        .modal {
+            .header {
+                h3 {
+                    >span {
+                        font-size: 25px;
+                    }
+                }
+            }
+
+            .content {
+                .duoBlocks {
+                    h2 {
+                        font-size: 20px;
+                    }
+
+                    h3 {
+                        font-size: 18px;
+                    }
+
+                    h5 {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+@import '../../index.scss';
+
+.chip {
+    padding: 5px 12px;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    max-width: max-content;
+
+    &.borderBig {
+        border-radius: 100px;
+    }
+
+    &.borderSmall {
+        border-radius: 8px;
+    }
+
+    &.red {
+        background: $RED;
+    }
+
+    &.yellow {
+        background: $YELLOW;
+    }
+
+    &.green {
+        background: $GREEN;
+    }
+
+    &.default {
+        background: $DEFAULT;
+        color: $GRAY;
+    }
+}
